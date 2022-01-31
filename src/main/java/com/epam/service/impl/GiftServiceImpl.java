@@ -52,7 +52,7 @@ public class GiftServiceImpl implements GiftService {
     /**{@inheritDoc}*/
     @Override
     public boolean update(GiftCertificate entity) {
-        return dao.update(GIFT_UPDATE, entity);
+        return dao.save(GIFT_UPDATE, entity);
     }
 
     /**{@inheritDoc}*/

@@ -23,21 +23,14 @@ public interface StatementUtil<T extends Entity> {
      * default, when the parameter {@code isUpdate == false}, the
      * method will not affect any existent record and will perform
      * a typical SQL save operation.
-     * <p>
-     * If the parameter {@code isUpdate == true}, then the method
-     * will be used in "update mode", that will draw a target from
-     * the given {@link Entity} to which all the changes will be
-     * applied.
      *
      * @param statement a statement to be filled up with data
      * @param entity an entity from which all the data will be drawn
-     * @param isUpdate sets the execution mode
      *
      * @return true if the operation was successful
      *
      * @throws SQLException if statement was corrupted
      */
     boolean fillStatement(PreparedStatement statement,
-                          T entity,
-                          boolean isUpdate) throws SQLException;
+                          T entity) throws SQLException;
 }

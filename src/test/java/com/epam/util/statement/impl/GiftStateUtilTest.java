@@ -16,7 +16,7 @@ class GiftStateUtilTest {
     @Mock
     private final PreparedStatement statement = mock(PreparedStatement.class);
 
-    private final GiftStateUtil util = GiftStateUtil.INSTANCE;
+    private final GiftStateUtil util = new GiftStateUtil();
 
     private GiftCertificate testGift;
 
@@ -29,6 +29,6 @@ class GiftStateUtilTest {
 
     @Test
     void fillStatement() throws SQLException {
-        assertTrue(util.fillStatement(statement, testGift, false));
+        assertTrue(util.fillStatement(statement, testGift));
     }
 }

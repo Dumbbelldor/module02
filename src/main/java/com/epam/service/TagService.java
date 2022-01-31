@@ -1,7 +1,6 @@
 package com.epam.service;
 
 import com.epam.entity.impl.Tag;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -10,7 +9,6 @@ import java.util.List;
  * that extends the {@link Service} interface
  * with additional specialized methods.
  */
-@Component
 public interface TagService extends Service<Tag> {
 
     /**

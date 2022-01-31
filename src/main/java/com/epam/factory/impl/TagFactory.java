@@ -14,9 +14,7 @@ import static com.epam.factory.impl.FactoryConstants.*;
  * of the {@link EntityFactory}.
  */
 @Component
-public enum TagFactory implements EntityFactory<Tag> {
-
-    INSTANCE;
+public class TagFactory implements EntityFactory<Tag> {
 
     /**{@inheritDoc}*/
     @Override

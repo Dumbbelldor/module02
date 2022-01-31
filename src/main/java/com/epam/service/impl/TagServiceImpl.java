@@ -51,7 +51,7 @@ public class TagServiceImpl implements TagService {
     /**{@inheritDoc}*/
     @Override
     public boolean update(Tag entity) {
-        return dao.update(TAG_UPDATE, entity);
+        return dao.save(TAG_UPDATE, entity);
     }
 
     /**{@inheritDoc}*/

@@ -1,7 +1,6 @@
 package com.epam.service;
 
 import com.epam.entity.Entity;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,7 +12,6 @@ import java.util.Optional;
  *
  * @param <T> any {@link Entity} implementation
  */
-@Component
 public interface Service<T extends Entity> {
 
     /**

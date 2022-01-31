@@ -2,7 +2,6 @@ package com.epam.service;
 
 import com.epam.entity.impl.GiftCertificate;
 import com.epam.util.sorting.impl.GiftSqlSorting;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -11,7 +10,6 @@ import java.util.List;
  * that extends the {@link Service} interface
  * with additional specialized methods.
  */
-@Component
 public interface GiftService extends Service<GiftCertificate> {
 
     /**

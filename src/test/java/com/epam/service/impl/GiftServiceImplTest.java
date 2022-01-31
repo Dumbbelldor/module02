@@ -52,8 +52,6 @@ class GiftServiceImplTest {
                 .thenReturn(List.of(testGift));
         when(dao.findAll(anyString(), anyLong()))
                 .thenReturn(List.of(testGift));
-        when(dao.update(anyString(), any(GiftCertificate.class)))
-                .thenReturn(true);
         when(dao.delete(anyString(), anyLong()))
                 .thenReturn(true);
         when(dao.addTagByCertId(anyString(), anyLong(), anyString()))

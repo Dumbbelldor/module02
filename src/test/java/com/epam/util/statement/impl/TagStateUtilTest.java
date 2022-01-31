@@ -16,7 +16,7 @@ class TagStateUtilTest {
     @Mock
     private final PreparedStatement statement = mock(PreparedStatement.class);
 
-    private final TagStateUtil util = TagStateUtil.INSTANCE;
+    private final TagStateUtil util = new TagStateUtil();
 
     private Tag testTag;
 
@@ -29,6 +29,6 @@ class TagStateUtilTest {
 
     @Test
     void fillStatement1() throws SQLException {
-        assertTrue(util.fillStatement(statement, testTag, false));
+        assertTrue(util.fillStatement(statement, testTag));
     }
 }

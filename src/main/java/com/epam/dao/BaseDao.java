@@ -83,25 +83,6 @@ public interface BaseDao<T extends Entity> {
     <P> List<T> findAll(String sql, P param);
 
     /**
-     * Performs a typical CRUD "update" operation
-     * by executing the given SQL query with
-     * {@link java.sql.PreparedStatement}.
-     * <p>
-     * Draws upon entity's data to fill the statement
-     * for updating an existent record in a database.
-     * <p>
-     * Fetches no results at the end and returns
-     * {@code boolean} as an indicator
-     * of the accomplished task.
-     *
-     * @param sql a sql query
-     * @param entity an entity to get information from
-     *
-     * @return true if updating was successful
-     */
-    boolean update(String sql, T entity);
-
-    /**
      * Performs a typical CRUD "delete" operation
      * by executing the given SQL query with
      * {@link java.sql.PreparedStatement}.

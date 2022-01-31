@@ -7,8 +7,6 @@ import com.epam.factory.EntityFactory;
 import com.epam.util.statement.StatementUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -49,7 +47,7 @@ public class BaseDaoImpl<T extends Entity> implements BaseDao<T> {
 
             try (Connection conn = pool.getConnection();
                  PreparedStatement statement = conn.prepareStatement(sql)) {
-                util.fillStatement(statement, entity, false);
+                util.fillStatement(statement, entity);
                 statement.executeUpdate();
                 flag = true;
             } catch (SQLException e) {
@@ -120,25 +118,6 @@ public class BaseDaoImpl<T extends Entity> implements BaseDao<T> {
 
         }
         return result;
-    }
-
-    /**{@inheritDoc}*/
-    @Override
-    public boolean update(String sql, T entity) {
-        boolean flag = false;
-        if (!sql.isBlank() && entity != null) {
-
-            try (Connection conn = pool.getConnection();
-                 PreparedStatement statement = conn.prepareStatement(sql)) {
-                util.fillStatement(statement, entity, true);
-                statement.executeUpdate();
-                flag = true;
-            } catch (SQLException e) {
-                log.error(ERROR_SQL, e);
-            }
-
-        }
-        return flag;
     }
 
     /**{@inheritDoc}*/

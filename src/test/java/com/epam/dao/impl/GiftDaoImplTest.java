@@ -51,7 +51,7 @@ class GiftDaoImplTest {
 
     @InjectMocks
     private final BaseDao<GiftCertificate> dao = new GiftDaoImpl(pool,
-            GiftStateUtil.INSTANCE, GiftFactory.INSTANCE);
+            new GiftStateUtil(), new GiftFactory());
 
     private GiftCertificate testEntity;
     private List<GiftCertificate> testList;
@@ -116,7 +116,7 @@ class GiftDaoImplTest {
                 .setCreateDate(null)
                 .setLastUpdateTime(null)
                 .build();
-        assertTrue(dao.update(UPDATE, updateEntity));
+        assertTrue(dao.save(UPDATE, updateEntity));
     }
 
     @Test

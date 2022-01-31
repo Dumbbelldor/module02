@@ -1,6 +1,7 @@
 package com.epam.config;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.*;
@@ -9,6 +10,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @EnableWebMvc
 @Configuration
+@ComponentScan("com.epam")
 public class WebMvcConfig implements WebMvcConfigurer {
 
     @Bean
@@ -26,6 +28,4 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
     }
-
-
 }

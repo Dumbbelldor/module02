@@ -1,7 +1,6 @@
 package com.epam.factory;
 
 import com.epam.entity.Entity;
-import org.springframework.stereotype.Component;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,7 +12,6 @@ import java.sql.SQLException;
  *
  * @param <T> an entity to be created
  */
-@Component
 public interface EntityFactory<T extends Entity> {
 
     /**

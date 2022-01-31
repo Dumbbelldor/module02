@@ -14,9 +14,7 @@ import static com.epam.factory.impl.FactoryConstants.*;
  * of the {@link EntityFactory}.
  */
 @Component
-public enum GiftFactory implements EntityFactory<GiftCertificate> {
-
-    INSTANCE;
+public class GiftFactory implements EntityFactory<GiftCertificate> {
 
     /**{@inheritDoc}*/
     @Override

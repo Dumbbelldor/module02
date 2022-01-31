@@ -42,8 +42,6 @@ class TagServiceImplTest {
                 .thenReturn(List.of(testTag));
         when(dao.findAll(anyString(), anyLong()))
                 .thenReturn(List.of(testTag));
-        when(dao.update(anyString(), any(Tag.class)))
-                .thenReturn(true);
         when(dao.delete(anyString(), anyLong()))
                 .thenReturn(true);
     }

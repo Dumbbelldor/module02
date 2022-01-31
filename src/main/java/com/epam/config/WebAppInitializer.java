@@ -7,27 +7,24 @@ import org.springframework.web.context.support.GenericWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
 import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
 public class WebAppInitializer implements WebApplicationInitializer {
 
     @Override
-    public void onStartup(ServletContext sc) throws ServletException {
-        AnnotationConfigWebApplicationContext root =
-                new AnnotationConfigWebApplicationContext();
-        root.register(WebMvcConfig.class);
-        root.refresh();
-        root.setServletContext(sc);
+    public void onStartup(ServletContext container) {
+        AnnotationConfigWebApplicationContext context
+                = new AnnotationConfigWebApplicationContext();
+        context.scan("com.epam");
 
-        sc.addListener(new ContextLoaderListener(root));
+        container.addListener(new ContextLoaderListener(context));
 
-        ServletRegistration.Dynamic appServlet =
-                sc.addServlet("mvc",
-                        new DispatcherServlet(new GenericWebApplicationContext()));
-        appServlet.setLoadOnStartup(1);
-        appServlet.addMapping("/");
+        ServletRegistration.Dynamic dispatcher = container
+                .addServlet("mvc", new DispatcherServlet(
+                        new GenericWebApplicationContext()));
+
+        dispatcher.setLoadOnStartup(1);
+        dispatcher.addMapping("/");
     }
-
 
 }
