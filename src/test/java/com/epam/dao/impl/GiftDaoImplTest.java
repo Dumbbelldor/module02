@@ -18,33 +18,33 @@ import static org.mockito.Mockito.*;
 
 class GiftDaoImplTest {
 
-    private static final String SAVE = """
-                insert into gift_certificate
-                (id, name, description, price, duration, create_date, last_update_time)
-                values (12, ?, ?, ?, ?, ?, ?)""";
+    private static final String SAVE =
+                "insert into gift_certificate" +
+                " (id, name, description, price, duration, create_date, last_update_time)" +
+                " values (12, ?, ?, ?, ?, ?, ?)";
 
-    private static final String FIND = """
-                select * from gift_certificate
-                where id = ?""";
+    private static final String FIND =
+                "select * from gift_certificate" +
+                "where id = ?";
 
-    private static final String FIND_ALL = """
-                select *
-                from gift_certificate""";
+    private static final String FIND_ALL =
+                "select *" +
+                " from gift_certificate";
 
-    private static final String FIND_ALL_PARAMETRIZED = """
-                select *
-                from gift_certificate
-                where name = ?""";
+    private static final String FIND_ALL_PARAMETRIZED =
+                "select *" +
+                " from gift_certificate" +
+                " where name = ?";
 
-    private static final String UPDATE = """
-                update gift_certificate
-                set name = ?, description = ?, price = ?, duration = ?,
-                create_date = ?, last_update_time = ?
-                where id = ?""";
+    private static final String UPDATE =
+                "update gift_certificate" +
+                " set name = ?, description = ?, price = ?, duration = ?," +
+                " create_date = ?, last_update_time = ?" +
+                " where id = ?";
 
-    private static final String DELETE = """
-                delete from gift_certificate
-                where id = ?""";
+    private static final String DELETE =
+                "delete from gift_certificate" +
+                " where id = ?";
 
     @Mock
     private final ConnectionPool pool = mock(ConnectionPool.class);
@@ -127,57 +127,50 @@ class GiftDaoImplTest {
     private String[] prepareSql() {
         return new String[]
                 {
-                        """
-                        create table if not exists gift_certificate
-                        (
-                        	id bigserial not null
-                        		constraint gift_certificate_pk
-                        			primary key,
-                        	name varchar(100),
-                        	description varchar(500),
-                        	price numeric,
-                        	duration integer,
-                        	create_date timestamp default now(),
-                        	last_update_time timestamp default now()
-                        );""",
-                        """
-                        create unique index if not exists gift_certificate_id_uindex
-                        	on gift_certificate (id);
-                        """,
-                        """
-                        create table if not exists tag
-                        (
-                        	id bigserial not null
-                        		constraint tag_pk
-                        			primary key,
-                        	name varchar(100)
-                        );
-                        """,
-                        """
-                        create unique index if not exists tag_id_uindex
-                        	on tag (id);
-                        """,
-                        """
-                        create unique index if not exists tag_name_uindex
-                        	on tag (name);
-                        """,
-                        """
-                        create table if not exists gift_tag_mapping
-                        (
-                        	gc_id bigint
-                        		constraint gift_tag_mapping_gift_certificate_id_fk
-                        			references gift_certificate,
-                        	t_id bigint
-                        		constraint gift_tag_mapping_tag_id_fk
-                        			references tag
-                        );
-                        """,
-                        """
-                         insert into gift_certificate
-                         (id, name, description, price,
-                         duration, create_date, last_update_time)
-                         values (12, 'test', 'desc', 123, 4, null, null)
-                        """,
+                        "create table if not exists gift_certificate" +
+                        "(" +
+                        "	id bigserial not null" +
+                        "		constraint gift_certificate_pk" +
+                        "			primary key," +
+                        "	name varchar(100)," +
+                        "	description varchar(500)," +
+                        "	price numeric," +
+                        "	duration integer," +
+                        "	create_date timestamp default now()," +
+                        "	last_update_time timestamp default now()" +
+                        ");",
+
+                        "create unique index if not exists gift_certificate_id_uindex" +
+                        "	on gift_certificate (id);",
+
+                        "create table if not exists tag" +
+                        "(" +
+                        "	id bigserial not null" +
+                        "		constraint tag_pk" +
+                        "			primary key," +
+                        "	name varchar(100)" +
+                        ");",
+
+                        "create unique index if not exists tag_id_uindex" +
+                        "	on tag (id);",
+
+                        "create unique index if not exists tag_name_uindex" +
+                        "	on tag (name);",
+
+                        "create table if not exists gift_tag_mapping" +
+                        "(" +
+                        "	gc_id bigint" +
+                        "		constraint gift_tag_mapping_gift_certificate_id_fk" +
+                        "			references gift_certificate," +
+                        "	t_id bigint" +
+                        "		constraint gift_tag_mapping_tag_id_fk" +
+                        "			references tag" +
+                        ");",
+
+                        " insert into gift_certificate" +
+                        " (id, name, description, price," +
+                        " duration, create_date, last_update_time)" +
+                        " values (12, 'test', 'desc', 123, 4, null, null)"
                 };
     }
 }
